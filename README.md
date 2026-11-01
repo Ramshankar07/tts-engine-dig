@@ -1,6 +1,6 @@
-# tts-engine-bench
+# tts-engine-dig
 
-Benchmark harness for **tts-engine-bench**: serve one TTS checkpoint,
+Benchmark harness: serve one TTS checkpoint,
 `Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice`, on three inference engines and compare
 them under matched settings:
 
@@ -115,7 +115,7 @@ KV reservation), [Nsight Systems](https://developer.nvidia.com/nsight-systems)
 for session 4, and outbound access to GitHub and Hugging Face.
 
 ```bash
-git clone <this repo> p1-tts-engine-bench && cd p1-tts-engine-bench   # or rsync it
+git clone https://github.com/Ramshankar07/tts-engine-dig.git && cd tts-engine-dig   # or rsync it
 bash scripts/setup_gpu_box.sh          # venvs: client, official, eval, vllm, sglang; model snapshot -> ~/p1/models
 # settings used for the measured runs (see "Running on Modal"):
 #   OFFICIAL_TORCH=2.8.0 FLASH_ATTN_WHEEL=<flash_attn-2.8.3+cu12torch2.8 wheel URL> TORCH_BACKEND=cu128 ... official
