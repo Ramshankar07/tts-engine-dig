@@ -1,0 +1,42 @@
+# CPU smoke configuration: fake engine, fast timings, fake ASR, no MOS.
+# Exercises the full pipeline (bench -> quality -> streaming -> report) on a laptop.
+
+[run]
+name = "fake-smoke"
+seed = 1234
+prompts = "prompts/p1_prompts.jsonl"
+output_dir = "runs"
+concurrency = [1, 4]
+modes = ["full", "stream"]
+warmup_requests = 1
+repeats = 1
+save_audio = true
+request_timeout_s = 30
+limit = 12
+
+[model]
+id = "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice"
+revision = "0c0e3051f131929182e2c023b9537f8b1c68adfe"
+voice = "Ryan"
+language = "English"
+precision = "bfloat16"
+sample_rate = 24000
+codec_frame_rate_hz = 12.5
+
+[streaming]
+initial_codec_chunk_frames = [-1, 1, 4]
+underrun_threshold_ms = 50
+
+[quality]
+asr_backend = "fake"
+mos_backend = "none"
+bootstrap_samples = 300
+fake_error_every = 9
+
+[engines.fake]
+prefill_ms = 20
+rtf = 0.02
+chunk_frames = 12
+chunk_overhead_ms = 2
+contention = 0.3
+jitter_ms = 1

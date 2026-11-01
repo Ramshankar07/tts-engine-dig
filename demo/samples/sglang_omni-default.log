@@ -1,0 +1,18 @@
+chunk   0  t=    20.9 ms  +  80.0 ms audio
+chunk   1  t=    34.1 ms  + 160.0 ms audio
+chunk   2  t=    54.3 ms  + 320.0 ms audio
+chunk   3  t=    93.3 ms  + 640.0 ms audio
+chunk   4  t=   132.2 ms  + 640.0 ms audio
+chunk   5  t=   169.9 ms  + 640.0 ms audio
+chunk   6  t=   208.3 ms  + 640.0 ms audio
+chunk   7  t=   246.9 ms  + 640.0 ms audio
+chunk   8  t=   284.3 ms  + 640.0 ms audio
+chunk   9  t=   323.8 ms  + 640.0 ms audio
+chunk  10  t=   362.2 ms  + 640.0 ms audio
+chunk  11  t=   399.8 ms  + 640.0 ms audio
+chunk  12  t=   438.2 ms  + 640.0 ms audio
+chunk  13  t=   467.6 ms  + 400.0 ms audio
+
+TTFA 20.9 ms | total 0.47 s | audio 7.36 s | RTF 0.064
+simulated playback: 0 underruns, 0.0 ms total stall, max 0.0 ms
+wrote /root/repo/runs/demo/sglang_omni-default.wav

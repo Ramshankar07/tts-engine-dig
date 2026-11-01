@@ -1,0 +1,48 @@
+{
+  "engine": "official",
+  "cells": [
+    {
+      "mode": "full",
+      "concurrency": 1,
+      "chunk": null,
+      "cell": "full-c1",
+      "n_requests": 70,
+      "n_failed": 0,
+      "wall_time_s": 956.2717718890053,
+      "audio_seconds": 686.96,
+      "throughput_audio_s_per_s": 0.718373186571208,
+      "requests_per_s": 0.07320094774074845,
+      "peak_gpu_mem_mb": 6742.6875,
+      "ttfa_p50_s": 11.613786581001477
+    },
+    {
+      "mode": "full",
+      "concurrency": 4,
+      "chunk": null,
+      "cell": "full-c4",
+      "n_requests": 70,
+      "n_failed": 0,
+      "wall_time_s": 352.9259333299997,
+      "audio_seconds": 676.08,
+      "throughput_audio_s_per_s": 1.9156427344993052,
+      "requests_per_s": 0.19834189950146633,
+      "peak_gpu_mem_mb": 11312.6875,
+      "ttfa_p50_s": 14.944102130990359
+    },
+    {
+      "mode": "full",
+      "concurrency": 8,
+      "chunk": null,
+      "cell": "full-c8",
+      "n_requests": 70,
+      "n_failed": 0,
+      "wall_time_s": 234.40926049801055,
+      "audio_seconds": 698.24,
+      "throughput_audio_s_per_s": 2.9787219093501895,
+      "requests_per_s": 0.2986230145143694,
+      "peak_gpu_mem_mb": 18892.6875,
+      "ttfa_p50_s": 19.919674881006358
+    }
+  ],
+  "gpu_peak_mb": 18892.6875
+}

@@ -1,0 +1,112 @@
+{
+  "run": {
+    "name": "p1",
+    "seed": 1234,
+    "prompts": "prompts/p1_prompts.jsonl",
+    "output_dir": "runs",
+    "concurrency": [
+      1,
+      4,
+      8
+    ],
+    "modes": [
+      "full",
+      "stream"
+    ],
+    "warmup_requests": 3,
+    "repeats": 1,
+    "save_audio": true,
+    "request_timeout_s": 300.0,
+    "limit": null
+  },
+  "model": {
+    "id": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+    "revision": "0c0e3051f131929182e2c023b9537f8b1c68adfe",
+    "local_path": "",
+    "voice": "Ryan",
+    "language": "English",
+    "instructions": "",
+    "precision": "bfloat16",
+    "sample_rate": 24000,
+    "codec_frame_rate_hz": 12.5
+  },
+  "sampling": {
+    "do_sample": true,
+    "temperature": 0.9,
+    "top_k": 50,
+    "top_p": 1.0,
+    "repetition_penalty": 1.05,
+    "subtalker_dosample": true,
+    "subtalker_temperature": 0.9,
+    "subtalker_top_k": 50,
+    "subtalker_top_p": 1.0,
+    "max_new_tokens": 2048
+  },
+  "streaming": {
+    "initial_codec_chunk_frames": [
+      -1,
+      1,
+      4,
+      12
+    ],
+    "prebuffer_ms": 0.0,
+    "underrun_threshold_ms": 50.0,
+    "silence_threshold": 0.001,
+    "suppress_bootstrap_silence": false,
+    "verdict": {
+      "min_ttfa_reduction": 0.5,
+      "max_underrun_request_frac": 0.05,
+      "max_total_time_overhead": 0.2
+    }
+  },
+  "gpu": {
+    "device_index": 0,
+    "poll_interval_s": 0.2
+  },
+  "quality": {
+    "asr_backend": "whisper",
+    "asr_model": "openai/whisper-large-v3",
+    "asr_revision": "06f233fe06e710322aca913c1bc4249a0d71fce1",
+    "asr_language": "english",
+    "asr_device": "cuda:0",
+    "asr_batch_size": 8,
+    "mos_backend": "utmosv2",
+    "bootstrap_samples": 2000,
+    "fake_error_every": 0
+  },
+  "engines": {
+    "official": {
+      "device": "cuda:0",
+      "attn_implementation": "flash_attention_2"
+    },
+    "vllm_omni": {
+      "base_url": "http://127.0.0.1:8091",
+      "send_seed": true
+    },
+    "sglang_omni": {
+      "base_url": "http://127.0.0.1:8000",
+      "send_seed": true,
+      "send_sampling": true
+    },
+    "fake": {
+      "prefill_ms": 120,
+      "rtf": 0.25,
+      "chunk_frames": 12,
+      "chunk_overhead_ms": 15,
+      "contention": 0.35,
+      "jitter_ms": 5
+    }
+  },
+  "base_dir": "/root/repo",
+  "prompts_sha256": "88c3d829991de868ea57478cb62595f60e650acd9f97c66939183f62092c7f8e",
+  "n_prompts": 70,
+  "cells": [
+    "full-c1",
+    "stream-c1-kdefault",
+    "full-c4",
+    "stream-c4-kdefault",
+    "full-c8",
+    "stream-c8-kdefault"
+  ],
+  "skipped_cells": []
+}

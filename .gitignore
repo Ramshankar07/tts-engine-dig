@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+# benchmark outputs (keep the folder, not the contents)
+runs/*
+!runs/.gitkeep
+reports/
+*.nsys-rep
+*.sqlite
+demo/out/
+modal-runs/

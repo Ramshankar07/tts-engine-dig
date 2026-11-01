@@ -1,0 +1,13 @@
+chunk   0  t=    30.4 ms  +  80.0 ms audio
+chunk   1  t=   193.7 ms  +1365.2 ms audio
+chunk   2  t=   197.1 ms  + 634.8 ms audio
+chunk   3  t=   351.1 ms  +1365.2 ms audio
+chunk   4  t=   353.8 ms  + 634.8 ms audio
+chunk   5  t=   506.7 ms  +1365.2 ms audio
+chunk   6  t=   510.2 ms  + 634.8 ms audio
+chunk   7  t=   661.2 ms  +1365.2 ms audio
+chunk   8  t=   664.5 ms  + 554.8 ms audio
+
+TTFA 30.4 ms | total 0.67 s | audio 8.00 s | RTF 0.083
+simulated playback: 1 underruns, 83.3 ms total stall, max 83.3 ms
+wrote /root/repo/runs/demo/vllm_omni-default.wav

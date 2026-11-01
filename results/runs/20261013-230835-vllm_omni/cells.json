@@ -1,0 +1,90 @@
+{
+  "engine": "vllm_omni",
+  "cells": [
+    {
+      "mode": "full",
+      "concurrency": 1,
+      "chunk": null,
+      "cell": "full-c1",
+      "n_requests": 70,
+      "n_failed": 0,
+      "wall_time_s": 55.51085555899772,
+      "audio_seconds": 685.4399999999999,
+      "throughput_audio_s_per_s": 12.347855083435071,
+      "requests_per_s": 1.2610146122789085,
+      "peak_gpu_mem_mb": 27043.0,
+      "ttfa_p50_s": 0.675883926996903
+    },
+    {
+      "mode": "stream",
+      "concurrency": 1,
+      "chunk": null,
+      "cell": "stream-c1-kdefault",
+      "n_requests": 70,
+      "n_failed": 0,
+      "wall_time_s": 55.058859958997346,
+      "audio_seconds": 685.4399999999999,
+      "throughput_audio_s_per_s": 12.449222532221901,
+      "requests_per_s": 1.2713666801697203,
+      "peak_gpu_mem_mb": 27043.0,
+      "ttfa_p50_s": 0.020143470996117685
+    },
+    {
+      "mode": "full",
+      "concurrency": 4,
+      "chunk": null,
+      "cell": "full-c4",
+      "n_requests": 70,
+      "n_failed": 0,
+      "wall_time_s": 18.586066021001898,
+      "audio_seconds": 691.68,
+      "throughput_audio_s_per_s": 37.21497595125374,
+      "requests_per_s": 3.766262312901576,
+      "peak_gpu_mem_mb": 27047.0,
+      "ttfa_p50_s": 0.8586634224993759
+    },
+    {
+      "mode": "stream",
+      "concurrency": 4,
+      "chunk": null,
+      "cell": "stream-c4-kdefault",
+      "n_requests": 70,
+      "n_failed": 0,
+      "wall_time_s": 17.23855860400363,
+      "audio_seconds": 682.48,
+      "throughput_audio_s_per_s": 39.590317014178616,
+      "requests_per_s": 4.060664328614029,
+      "peak_gpu_mem_mb": 27047.0,
+      "ttfa_p50_s": 0.028893729504488874
+    },
+    {
+      "mode": "full",
+      "concurrency": 8,
+      "chunk": null,
+      "cell": "full-c8",
+      "n_requests": 70,
+      "n_failed": 0,
+      "wall_time_s": 11.479313237010501,
+      "audio_seconds": 707.04,
+      "throughput_audio_s_per_s": 61.59253479732824,
+      "requests_per_s": 6.0979257691403275,
+      "peak_gpu_mem_mb": 27081.0,
+      "ttfa_p50_s": 1.0413900380008272
+    },
+    {
+      "mode": "stream",
+      "concurrency": 8,
+      "chunk": null,
+      "cell": "stream-c8-kdefault",
+      "n_requests": 70,
+      "n_failed": 0,
+      "wall_time_s": 11.449163722994854,
+      "audio_seconds": 700.32,
+      "throughput_audio_s_per_s": 61.167786306824816,
+      "requests_per_s": 6.113983666720552,
+      "peak_gpu_mem_mb": 27083.0,
+      "ttfa_p50_s": 0.033564642995770555
+    }
+  ],
+  "gpu_peak_mb": 27083.0
+}

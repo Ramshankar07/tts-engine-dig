@@ -1,0 +1,19 @@
+{
+  "engine": {
+    "engine": "official",
+    "supports_streaming": false,
+    "model_path": "/root/p1/models/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+    "precision": "bfloat16",
+    "device": "cuda:0",
+    "attn_implementation": "flash_attention_2",
+    "qwen_tts_version": "0.1.1"
+  },
+  "prompts": [
+    "p1-001",
+    "p1-002"
+  ],
+  "torch": "2.8.0+cu128",
+  "param_dtypes": {
+    "torch.bfloat16": 1916676352
+  }
+}

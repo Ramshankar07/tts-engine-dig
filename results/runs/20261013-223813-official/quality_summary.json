@@ -1,0 +1,61 @@
+{
+  "run_id": "20261013-223813-official",
+  "normalizer": "tts-bench-norm-v1",
+  "asr": {
+    "backend": "whisper",
+    "model": "openai/whisper-large-v3",
+    "revision": "06f233fe06e710322aca913c1bc4249a0d71fce1",
+    "transformers": "5.19.0"
+  },
+  "mos": {
+    "backend": "utmosv2",
+    "label": "predicted MOS"
+  },
+  "cells": {
+    "full-c1": {
+      "n": 70,
+      "n_failed_synthesis": 0,
+      "corpus_wer": {
+        "value": 0.021608643457382955,
+        "lo": 0.00680180055784154,
+        "hi": 0.03965377352923821
+      },
+      "pred_mos": {
+        "value": 3.303404017857143,
+        "lo": 3.224435686383929,
+        "hi": 3.376787806919643,
+        "n": 70
+      }
+    },
+    "full-c4": {
+      "n": 70,
+      "n_failed_synthesis": 0,
+      "corpus_wer": {
+        "value": 0.01680672268907563,
+        "lo": 0.0060561142206621765,
+        "hi": 0.030995750099599848
+      },
+      "pred_mos": {
+        "value": 3.2826729910714287,
+        "lo": 3.2043178013392857,
+        "hi": 3.3592647879464286,
+        "n": 70
+      }
+    },
+    "full-c8": {
+      "n": 70,
+      "n_failed_synthesis": 0,
+      "corpus_wer": {
+        "value": 0.03181272509003601,
+        "lo": 0.0070729641930734975,
+        "hi": 0.07524022176505206
+      },
+      "pred_mos": {
+        "value": 3.2586495535714284,
+        "lo": 3.1782547433035715,
+        "hi": 3.3399846540178575,
+        "n": 70
+      }
+    }
+  }
+}

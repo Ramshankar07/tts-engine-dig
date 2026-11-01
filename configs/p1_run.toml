@@ -1,0 +1,93 @@
+# P1 pinned run configuration. Everything that must match across engines lives
+# here. Change it only between experiment series, never mid-series, and keep the
+# resolved copy that bench.py writes into each runs/<ts>-<engine>/config.json.
+
+[run]
+name = "p1"
+seed = 1234                         # base seed; per-request seed = seed + prompt index
+prompts = "prompts/p1_prompts.jsonl"
+output_dir = "runs"
+concurrency = [1, 4, 8]
+modes = ["full", "stream"]          # official engine has no true streaming; it is skipped for "stream"
+warmup_requests = 3                 # not recorded; warms CUDA graphs / caches
+repeats = 1
+save_audio = true                   # needed for WER / predicted MOS
+request_timeout_s = 300
+
+[model]
+id = "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice"
+revision = "0c0e3051f131929182e2c023b9537f8b1c68adfe"   # HF main as of 2026-10-13 (lastModified 2026-01-29)
+local_path = ""                     # setup_gpu_box.sh downloads to $MODEL_DIR; set this (or pass --model-path) so all engines load identical files
+voice = "Ryan"                      # English-native CustomVoice speaker (README speaker table)
+language = "English"
+instructions = ""                   # no style instruction: keeps the three engines' prompts identical
+precision = "bfloat16"
+sample_rate = 24000
+codec_frame_rate_hz = 12.5          # verified: speech_tokenizer/config.json decode_upsample_rate=1920 at 24 kHz -> 12.5 Hz, 16 codebooks
+
+[sampling]
+# Equal to the checkpoint's generation_config.json (fetched 2026-10-13) and to the
+# vLLM-Omni deploy YAML defaults, except max_new_tokens (checkpoint: 8192), which
+# is pinned to the 2048 default used by both serving engines.
+do_sample = true
+temperature = 0.9
+top_k = 50
+top_p = 1.0
+repetition_penalty = 1.05
+subtalker_dosample = true
+subtalker_temperature = 0.9
+subtalker_top_k = 50
+subtalker_top_p = 1.0
+max_new_tokens = 2048
+
+[streaming]
+# initial_codec_chunk_frames sweep (codec frames, 1 frame = 80 ms at 12.5 Hz).
+# -1 = omit the field (engine default: vLLM-Omni deploy yaml = 1 then 25-frame
+# steady chunks; SGLang-Omni = 1 -> 2 -> 4 ramp then steady stride).
+initial_codec_chunk_frames = [-1, 1, 4, 12]
+prebuffer_ms = 0
+underrun_threshold_ms = 50
+silence_threshold = 0.001
+suppress_bootstrap_silence = false
+
+[streaming.verdict]
+min_ttfa_reduction = 0.5
+max_underrun_request_frac = 0.05
+max_total_time_overhead = 0.2
+
+[gpu]
+device_index = 0
+poll_interval_s = 0.2
+
+[quality]
+asr_backend = "whisper"
+asr_model = "openai/whisper-large-v3"
+asr_revision = "06f233fe06e710322aca913c1bc4249a0d71fce1"
+asr_language = "english"
+asr_device = "cuda:0"
+asr_batch_size = 8
+mos_backend = "utmosv2"
+bootstrap_samples = 2000
+
+[engines.official]
+device = "cuda:0"
+attn_implementation = "flash_attention_2"   # falls back to "sdpa" if flash-attn is not importable
+# Concurrency for the in-process engine = static batch size (generate_custom_voice
+# accepts a list). There is no request scheduler in the official package.
+
+[engines.vllm_omni]
+base_url = "http://127.0.0.1:8091"
+send_seed = true
+
+[engines.sglang_omni]
+base_url = "http://127.0.0.1:8000"
+send_seed = true
+send_sampling = true    # SGLang-Omni documents per-request temperature/top_p/top_k/repetition_penalty
+
+[engines.fake]
+prefill_ms = 120
+rtf = 0.25
+chunk_frames = 12
+chunk_overhead_ms = 15
+contention = 0.35
+jitter_ms = 5
